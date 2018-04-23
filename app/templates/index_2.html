@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="icon" href="static/images/icons/favicon.ico">
+
+    <title>Forume</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+  </head>
+    <nav class="navbar navbar-light">
+      <img src="{{url_for('static',filename='images/image02.png')}}" class="logo-omac"></img>
+    </nav>
+    <nav class="nav nav-underline" style="background-color: #1d21242b">
+        <a class="nav-link active" href="{{url_for('home')}}"><span class="glyphicon glyphicon-home"></span> Home</a>
+       <!--<a class="nav-link" href="#">
+          Friends
+          <span class="badge badge-pill bg-light align-text-bottom">27</span>
+        </a>-->
+        <a class="nav-link" href="{{url_for('add_post')}}"><span class="glyphicon glyphicon-edit"></span> Add Post</a>
+        <a class="nav-link" href="{{url_for('contact_us')}}"><span class="glyphicon glyphicon-earphone"></span> Contact us</a>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"  aria-expanded="false" style="margin-left: 870px;">
+          <span class="glyphicon glyphicon-user"></span> Profile 
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">My Posts</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="{{url_for('login_page')}}"><span class="glyphicon glyphicon-share"></span> Sign out</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+      <h6 class="border-bottom border-gray pb-2 mb-0">Recent Posts</h6>
+      {% for post in posts %}
+      <div class="media text-muted pt-3">
+        <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <strong class="d-block text-gray-dark">{{post.title}}</strong>{{post.content}}</p>
+          <div class="btn-group" role="group" aria-label="..." style="margin-right: 150px">
+            <a class="btn btn-default">Edit <span class="glyphicon glyphicon-pencil"></span></a>
+            <a class="btn btn-default" href="{{url_for('delete_post',id=post.id)}}">Delete <span class="glyphicon glyphicon-trash"></span></a>
+          </div>
+      </div>
+      {%endfor%}    
+      <small class="d-block text-right mt-3">
+        <a href="#">All updates</a>
+      </small>
+    </div>
+
+      <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
+       {%for i in members%}
+        <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">{{i.name}}</strong>
+              <a href="#">Follow</a>
+            </div>
+            <span class="d-block">@username</span>
+          </div>
+        </div>
+        {%endfor%}
+        <small class="d-block text-right mt-3">
+          <a href="#">All suggestions</a>
+        </small>
+      </div>
+    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="static/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="static/js/vendor/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/vendor/holder.min.js"></script>
+    <script src="static/js/offcanvas.js"></script>
+  </body>
+</html>

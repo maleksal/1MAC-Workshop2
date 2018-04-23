@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" type="text/css" href="static/css/util.css">
+  <link rel="stylesheet" type="text/css" href="static/css/main.css">
+  <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <title>Creat Post</title>
+</head>
+<body>
+  <nav class="navbar navbar-light">
+    <img src="{{url_for('static',filename='images/image02.png')}}" class="logo-omac" style="padding-left: 200px;"></img>
+  </nav>
+  <nav class="nav nav-underline" style="background-color: #1d21242b">
+      <a class="nav-link active" href="{{url_for('home')}}"><span class="glyphicon glyphicon-home"></span> Home</a>
+     <!--<a class="nav-link" href="#">
+        Friends
+        <span class="badge badge-pill bg-light align-text-bottom">27</span>
+      </a>-->
+      <a class="nav-link" href="{{url_for('add_post')}}"><span class="glyphicon glyphicon-edit"></span> Add Post</a>
+      <a class="nav-link" href="{{url_for('contact_us')}}"><span class="glyphicon glyphicon-earphone"></span> Contact us</a>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"  aria-expanded="false" style="margin-left: 880px;">
+        <span class="glyphicon glyphicon-user"></span> Profile 
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">My Posts</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="{{url_for('login_page')}}"><span class="glyphicon glyphicon-share"></span> Sign out</a></li>
+        </ul>
+      </div>
+    </nav>
+    <form action="{{ url_for('add_post') }}" method="post" style="width: 1000px;"">
+      <div class="wrap-input100 validate-input" data-validate = "Please enter your phone">
+        <input class="input100" type="text" name="Title" placeholder="Title">
+        <span class="focus-input100"></span>
+      </div>
+
+      <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+        <input class="input100" type ="text" name="Content" placeholder="Content"></input>
+        <span class="focus-input100"></span>
+      </div>
+
+      <div class="container-contact100-form-btn">
+        <button class="contact100-form-btn">
+          <span>
+            <i  class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
+            POST
+          </span>
+        </button>
+      </div>
+
+    </form>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="static/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="static/js/vendor/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/vendor/holder.min.js"></script>
+    <script src="static/js/offcanvas.js"></script>
+  </body>
+</html>
